@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+<title>Hardware Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap/styles/bootstrap.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="app/js/lib/jquery.js"></script>
+<script src="app/js/lib/angular.js"></script>
+<script src="app/js/module/itemListModule.js"></script>
+<script src="app/js/controller/itemListController.js"></script>
+<script src="app/js/lib/bootsrap/lib/bootstrap.js"></script>
+
+</head>
+<body ng-app="myItemList" >
+	<header>
+	Hardware shop item details
+	</header>
+	<div ng-controller="itemListContoller">
+	<form name="form" class="item_form">
+		<div class="item_row item_name">
+		<label class="col-xs-4 col-sm-4">Item Name</label>
+		<input type="text" class="col-xs-8 col-sm-4" ng-model="itemname"/>
+		</div>
+		<div class="item_row item_qty">
+		<label class="col-xs-4 col-sm-4">Item Qty</label>
+		<input type="number" class="col-xs-8 col-sm-4" ng-model="itemqty"/>
+		</div>
+		<!-- angular currency-->
+		<div class="item_row item_price">
+		<label class="col-xs-4 col-sm-4">Item Price</label>
+		<input type="number" class="col-xs-8 col-sm-4" ng-model="itemprice"/>
+		</div>
+		<div class="btn_wrapper">
+		<button class="btn-primary" ng-click="itemAdd(item)"> Add </button>
+		</div>
+	</form>
+	<h3> My List of Items  - Inventory</h3>
+	<p><input type="text" ng-model="searchItems"></p>
+	<div class="table-responsive">
+	  <table class="table">
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Quantity</th>
+		<th>ItemPrice</th>
+		<th>Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+	
+	  <tr ng-repeat="myitems in myCartItems | filter:searchItems">
+	    <td><div>{{myitems.Id}}</div></td>
+		<td><div>{{myitems.Product}}</div></td>
+		<td><div ng-hide="showEdit[myitems.Id]">{{myitems.Qty}}</div>
+		<div ng-show="showEdit[myitems.Id]">
+<input type="text" ng-model="myitems.Qty"><br>
+</div>
+</td>
+		<td><div ng-hide="showEdit[myitems.Id]">{{myitems.Price|currency:"INR "}}</div>
+		<div ng-show="showEdit[myitems.Id]">
+<input type="text" ng-model="myitems.Price"><br>
+</div>
+		</td>
+			<td>
+			    <button class="btn-info" ng-click="saveItem(myitems)" ng-show="showEdit[myitems.Id]">SAVE</button>
+				<button class="btn_edit btn-primary" ng-click="editItem(myitems)" ng-hide="showEdit[myitems.Id]">Edit</button>
+				<button class="btn_secondary" ng-click="deleteItem(myitems)">Delete</button>
+			</td>
+	  </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+	<footer>
+	This is an example only
+	</footer>
+</body>
+</html>

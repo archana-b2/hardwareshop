@@ -1,0 +1,57 @@
+footer, header {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+footer {
+  border-top: 2px solid #d8dbde;
+  position: absolute;
+  bottom: 0;
+}
+
+header {
+  border-bottom: 2px solid #d8dbde;
+}
+
+.btn_edit {
+  margin-right: 10px;
+}
+
+.item_row {
+  margin: 0 15px 15px 15px;
+  display: flex;
+  label {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.item_form {
+  margin: 30px;
+  .btn_wrapper {
+    text-align: center;
+  }
+  .btn-primary {
+    width: 33%;
+  }
+}
+
+.btn_secondary {
+  background-color: #d8dbde;
+}
+
+@media all and (max-width: 768px) {
+  .item_form {
+    margin: 20px;
+  }
+}
+
+@media all and (max-width: 540px) {
+  .item_form {
+    margin: 10px;
+    .btn-primary {
+      width: 100%;
+    }
+  }
+}
