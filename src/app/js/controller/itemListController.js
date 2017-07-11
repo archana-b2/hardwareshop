@@ -35,9 +35,7 @@ myItemList.controller('itemListContoller',function($scope){
 		
 	/*After editing saving the updated item to the repository*/
 	$scope.saveItem = function(itemdata){
-		$scope.showEdit = false;
-		$scope.showBtnSave = false;
-		$scope.showBtnEdit = true;
+		$scope.showEdit[itemdata.Id]= false;
 	}
   });
    
