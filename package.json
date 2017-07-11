@@ -2,9 +2,10 @@
   "name": "hardware_details",
   "version": "1.0.0",
   "description": "for a poc",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt dev"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/archana-b2/hardwareshop#readme",
   "dependencies": {
-    "grunt-cli": "^1.2.0"
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1"
   },
   "devDependencies": {
     "grunt-run": "^0.7.0"

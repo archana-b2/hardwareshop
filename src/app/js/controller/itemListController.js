@@ -16,8 +16,8 @@ myItemList.controller('itemListContoller',function($scope){
 		$scope.myCartItems.push({Id: $scope.id,
 					Product: $scope.itemname,
 					Qty: $scope.itemqty,
-					Price: $scope.itemprice},		
-		);
+					Price: $scope.itemprice
+		});
 		$scope.id++;
 		$scope.reset();
 	},
@@ -35,9 +35,7 @@ myItemList.controller('itemListContoller',function($scope){
 		
 	/*After editing saving the updated item to the repository*/
 	$scope.saveItem = function(itemdata){
-		$scope.showEdit = false;
-		$scope.showBtnSave = false;
-		$scope.showBtnEdit = true;
+		$scope.showEdit[itemdata.Id] = false;
 	}
   });
    

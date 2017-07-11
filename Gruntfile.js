@@ -1,37 +1,46 @@
+/*jslint node: true */
+"use strict";
 module.exports = function(grunt) {
-grunt.initConfig({
-pkg: grunt.file.readJSON('package.json')
-concat: {
-  options: {
-    // define a string to put between each file in the concatenated output
-    separator: ';'
-  },
-  dist: {
-    // the files to concatenate
-    src: ['src/app/js/module/itemListModule.js'],['src/app/js/controller/itemListController.js'],
-    // the location of the resulting JS file
-    dest: 'dist/main.js'
-  }
-},
-uglify: {
-  options: {
-    // the banner is inserted at the top of the output
-    banner: '/*! main.js <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-  },
-  dist: {
-    files: {
-      'dist/main.min.js': ['<%= concat.dist.dest %>']
+  
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    
+      
+    uglify: {
+      dist: {
+        files: {
+          'dist/main.js': ['dist/main.js']
+        },
+        options: {
+          mangle: false
+        }
+      }
+    },
+    
+    clean: {
+      temp: {
+        src: [ 'tmp' ]
+      }
+    },
+    
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: [ 'src/app/js/module/itemListModule.js', 'src/app/js/controller/itemListController.js' ],
+        dest: 'dist/main.js'
+      }
     }
-  }
-}
-
-});
-grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  });
+  
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
-
-  grunt.registerTask('default', []);
-
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  
+  grunt.registerTask('dev', [ 'concat:dist','uglify:dist' ]);
+  grunt.registerTask('test', [ 'bower', 'jshint', 'karma:continuous' ]);
+  grunt.registerTask('minified', [ 'bower', 'connect:server', 'watch:min' ]);
+  grunt.registerTask('package', [ 'bower', 'jshint', 'karma:unit', 'html2js:dist', 'concat:dist', 'uglify:dist',
+    'clean:temp', 'compress:dist' ]);
 };

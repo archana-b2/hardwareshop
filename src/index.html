@@ -54,12 +54,12 @@
 		<td><div>{{myitems.Product}}</div></td>
 		<td><div ng-hide="showEdit[myitems.Id]">{{myitems.Qty}}</div>
 		<div ng-show="showEdit[myitems.Id]">
-<input type="text" ng-model="myitems.Qty"><br>
+<input type="number" ng-model="myitems.Qty"><br>
 </div>
 </td>
 		<td><div ng-hide="showEdit[myitems.Id]">{{myitems.Price|currency:"INR "}}</div>
 		<div ng-show="showEdit[myitems.Id]">
-<input type="text" ng-model="myitems.Price"><br>
+<input type="number" ng-model="myitems.Price"><br>
 </div>
 		</td>
 			<td>
