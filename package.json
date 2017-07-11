@@ -1,0 +1,25 @@
+{
+  "name": "hardware_details",
+  "version": "1.0.0",
+  "description": "for a poc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archana-b2/hardwareshop.git"
+  },
+  "author": "Archana b",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/archana-b2/hardwareshop/issues"
+  },
+  "homepage": "https://github.com/archana-b2/hardwareshop#readme",
+  "dependencies": {
+    "grunt-cli": "^1.2.0"
+  },
+  "devDependencies": {
+    "grunt-run": "^0.7.0"
+  }
+}
