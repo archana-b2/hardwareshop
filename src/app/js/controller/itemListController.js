@@ -12,12 +12,13 @@ myItemList.controller('itemListContoller',function($scope){
 	},
 	
 	/*Adding a hardware item*/
-	$scope.itemAdd = function(itemdata) {
+	$scope.addItem = function() {
 		$scope.myCartItems.push({Id: $scope.id,
 					Product: $scope.itemname,
 					Qty: $scope.itemqty,
-					Price: $scope.itemprice
-		});
+					Price: $scope.itemprice},		
+		);
+	
 		$scope.id++;
 		$scope.reset();
 	},
@@ -37,7 +38,21 @@ myItemList.controller('itemListContoller',function($scope){
 	$scope.saveItem = function(itemdata){
 		$scope.showEdit[itemdata.Id] = false;
 	}
+	
+$scope.submitForm = function(isValid) {
+
+		// check to make sure the form is completely valid
+		if (isValid) { 
+			alert('our form is amazing');
+			$scope.addItem();
+		}
+		else{
+			alert("fill in the fields");
+		}
+
+	};
   });
    
 
 
+  

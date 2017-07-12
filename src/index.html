@@ -12,26 +12,28 @@
 
 </head>
 <body ng-app="myItemList" >
-	<header>
-	Hardware shop item details
-	</header>
+<div>
+	<header class="page-header"><h1>Hardware shop item details</h1></header>
 	<div ng-controller="itemListContoller">
-	<form name="form" class="item_form">
-		<div class="item_row item_name">
-		<label class="col-xs-4 col-sm-4">Item Name</label>
-		<input type="text" class="col-xs-8 col-sm-4" ng-model="itemname"/>
+	<form name="form" class="item_form" ng-submit="submitForm(form.$valid)" novalidate>
+		<div class="item_row item_name" ng-class="{ 'has-error' : form.itemname.$invalid && !form.itemname.$pristine }">
+			<label class="col-xs-4 col-sm-4">Item Name</label>
+			<input type="text" name="itemname" class="col-xs-8 col-sm-4" ng-model="itemname" required/>
+			<p ng-show="form.itemname.$invalid && !form.itemname.$pristine" class="help-block">You name is required.</p>
 		</div>
-		<div class="item_row item_qty">
-		<label class="col-xs-4 col-sm-4">Item Qty</label>
-		<input type="number" class="col-xs-8 col-sm-4" ng-model="itemqty"/>
+		<div class="item_row item_qty" ng-class="{ 'has-error' : form.itemqty.$invalid && !form.itemqty.$pristine }">
+			<label class="col-xs-4 col-sm-4">Item Qty</label>
+			<input type="number" name="itemqty" class="col-xs-8 col-sm-4" ng-model="itemqty" required/>
+			<p ng-show="form.itemqty.$invalid && !form.itemqty.$pristine" class="help-block">You name is required.</p>
 		</div>
 		<!-- angular currency-->
-		<div class="item_row item_price">
-		<label class="col-xs-4 col-sm-4">Item Price</label>
-		<input type="number" class="col-xs-8 col-sm-4" ng-model="itemprice"/>
+		<div class="item_row item_price" ng-class="{ 'has-error' : form.itemprice.$invalid && !form.itemprice.$pristine}">
+			<label class="col-xs-4 col-sm-4">Item Price</label>
+			<input type="number" name="itemprice" class="col-xs-8 col-sm-4" ng-model="itemprice" required/>
+			<p ng-show="form.itemprice.$invalid && !form.itemprice.$pristine" class="help-block">You name is required.</p>
 		</div>
 		<div class="btn_wrapper">
-		<button class="btn-primary" ng-click="itemAdd(item)"> Add </button>
+			<button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Submit</button>
 		</div>
 	</form>
 	<h3> My List of Items  - Inventory</h3>
@@ -75,5 +77,6 @@
 	<footer>
 	This is an example only
 	</footer>
+	</div>
 </body>
 </html>
